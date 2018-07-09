@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.project.test.testwithasynctask.MainActivity;
@@ -16,7 +15,7 @@ import com.project.test.testwithasynctask.data.NotificationModel;
 
 import java.util.List;
 
-import static android.support.v4.app.NotificationCompat.*;
+import static android.support.v4.app.NotificationCompat.Builder;
 
 public class TestService extends Service {
     
@@ -41,9 +40,9 @@ public class TestService extends Service {
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.cancelAll();
         int i = 0;
-
+        
         for (NotificationModel model : notificationsList) {
-
+            
             Notification builder =
                     new Builder(this)
                             .setSmallIcon(android.R.drawable.ic_dialog_email)
@@ -55,7 +54,7 @@ public class TestService extends Service {
             notificationManager.notify(i, builder);
             i++;
         }
-
+        
     }
     
     private PendingIntent createPendingIntent(String message, int number) {

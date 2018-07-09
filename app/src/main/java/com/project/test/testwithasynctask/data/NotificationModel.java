@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class NotificationModel {
     
-    public NotificationModel(String sub, String text, Date sDt, Date fDt){
+    public NotificationModel(String sub, String text, Date sDt, Date fDt) {
         this.subject = sub;
         this.text = text;
         this.startDateTime = sDt;
@@ -12,13 +12,13 @@ public class NotificationModel {
     }
     
     private String id;
-  
+    
     private String subject;
-  
+    
     private String text;
     
     private Date startDateTime;
-   
+    
     private Date endDateTime;
     
     public String getSubject() {

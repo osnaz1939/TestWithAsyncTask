@@ -1,7 +1,6 @@
 package com.project.test.testwithasynctask.data;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.project.test.testwithasynctask.utils.TestApplicationImpl;
 
@@ -42,7 +41,6 @@ public class TestAsyncTask extends AsyncTask<String, Void, String> {
             
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 server_response = readStream(urlConnection.getInputStream());
-                Log.v("CatalogClient", server_response);
             }
             
         } catch (MalformedURLException e) {
@@ -58,8 +56,7 @@ public class TestAsyncTask extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         try {
             JSONArray News = new JSONArray(server_response);
-            for(int i=0; i<News.length(); i++)
-            {
+            for (int i = 0; i < News.length(); i++) {
                 JSONObject temp = News.getJSONObject(i);
                 NotificationModel testNotify = new NotificationModel(temp.getString("subject"),
                         temp.getString("text"),
@@ -72,9 +69,8 @@ public class TestAsyncTask extends AsyncTask<String, Void, String> {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-    
+        
         TestApplicationImpl.getTest().startServ(notifyList);
-        Log.e("Response", "" + notifyList.size());
         super.onPostExecute(s);
     }
     
